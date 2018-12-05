@@ -1,4 +1,4 @@
-(ns advent-of-code-clojure.core
+(ns advent-of-code-clojure.day-1
   (:require [clojure.string :as str]))
 
 (defn find-dup [seen-elems elem]
