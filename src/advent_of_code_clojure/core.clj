@@ -6,28 +6,17 @@
     (reduced elem)
     (conj seen-elems elem)))
 
-(def num-list (->> (slurp "resources/input.txt")
+(def num-list (->> (slurp "resources/input-day-1.txt")
                    (str/split-lines)
                    (mapv  #(Integer/parseInt %))))
 
 (defn solve [reduc start ls]
   (let [inter-results (reductions + start ls)
         last-e (last inter-results)
-        v (reduce find-dup reduc inter-results)]
+        v (reduce find-dup reduc (rest inter-results))]
     (if ((complement coll?) v)
       v
       (recur v last-e ls))))
 
 (solve #{} 0 num-list)
-
-(comment
-  (->> (slurp "resources/input1-1.txt")
-       (str/split-lines)
-       (mapv  #(Integer/parseInt %))
-       (reductions +)
-       (reduce find-dup #{})))
-
-
-
-
 
